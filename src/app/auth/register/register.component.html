@@ -1,0 +1,26 @@
+<form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="registerForm.controls['password'].errors?.['required']">
+    password is required.
+  </div>
+  <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+    password must be at least 8 characters long.
+  </div>
+  <div *ngIf="registerForm.controls['password'].hasError('pattern')">
+    password must contain at least one special character , one number , one uppercase and one lowercase.
+  </div>
+</div> 
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="username" formControlName="username">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput type="password"  placeholder="password" formControlName="password">
+    </mat-form-field>
+    <div class="example-button-row">
+      <button type="submit" mat-raised-button color="accent">submit</button>
+    </div>  
+     
+  </form>
